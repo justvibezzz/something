@@ -1,5 +1,5 @@
 -- [[ Stand proud. ]] --
-local Modules = loadstring(game:HttpGet("https://github.com/justvibezzz/something/blob/main/modules"))()
+loadstring(game:HttpGet("https://github.com/justvibezzz/something/blob/main/modules"))()
 local Global = getfenv(0).xyzkade
 
 local Tween = game:FindFirstChildOfClass("TweenService")
