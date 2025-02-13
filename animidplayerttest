@@ -1,0 +1,148 @@
+-- Configuration
+local settings = {
+    HideCharacter = false,
+    FlingEnabled = true,
+    TransparentRig = true,
+    ToolFling = true, -- false = holding, true = fling
+    AntiFling = true,
+    CustomHats = false, -- Enable or disable custom rig feature
+    CH = {
+        Torso = {
+            Name = "Black",
+            TextureId = "14251599953",
+            Orientation = CFrame.Angles(0, 0, 0)
+        },
+        LeftArm = {
+            Name = "Accessory (LARM)",
+            TextureId = "17374768001",
+            Orientation = CFrame.Angles(0, 0, math.rad(90))
+        },
+        RightArm = {
+            Name = "Accessory (RARM)",
+            TextureId = "17374768001",
+            Orientation = CFrame.Angles(0, 0, math.rad(90))
+        },
+        LeftLeg = {
+            Name = "Accessory (LLeg)",
+            TextureId = "17387586304",
+            Orientation = CFrame.Angles(0, 0, math.rad(90))
+        },
+        RightLeg = {
+            Name = "Accessory (rightleg)",
+            TextureId = "17387586304",
+            Orientation = CFrame.Angles(0, 0, math.rad(90))
+        }
+    }
+}
+
+-- Load external script
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nitro-GT/Oxide/refs/heads/main/Loadstring"))()
+
+-- Variables
+local playing = false
+local playAnother = false
+
+-- Functions
+local function wait2(time)
+    local RunService = game:GetService("RunService")
+    if time < 0.1 then
+        RunService.Heartbeat:Wait()
+    else
+        for _ = 1, time * 40 do
+            RunService.Heartbeat:Wait()
+        end
+    end
+end
+
+local function kfToTbl(keyframe)
+    local tbl = {}
+    for _, pose in pairs(keyframe:GetDescendants()) do
+        if pose:IsA("Pose") then
+            tbl[string.sub(pose.Name, 1, 1) .. string.sub(pose.Name, #pose.Name, #pose.Name)] = pose.CFrame
+        end
+    end
+    return tbl
+end
+
+-- GUI Elements
+local IDPlayer = Instance.new("ScreenGui", game:GetService("CoreGui"))
+IDPlayer.Name = "IDPlayer"
+
+local Frame = Instance.new("ImageLabel", IDPlayer)
+Frame.Name = "Frame"
+Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame.BackgroundTransparency = 1.0
+Frame.Position = UDim2.new(0.02, 0, 0.44, 0)
+Frame.Size = UDim2.new(0.22, 0, 0.3, 0)
+Frame.Image = "rbxassetid://3570695787"
+Frame.ImageColor3 = Color3.fromRGB(255, 0, 81)
+Frame.ScaleType = Enum.ScaleType.Slice
+Frame.SliceCenter = Rect.new(100, 100, 100, 100)
+Frame.SliceScale = 0.12
+
+local TextLabel = Instance.new("TextLabel", Frame)
+TextLabel.Text = "Animation ID Player"
+TextLabel.Font = Enum.Font.Cartoon
+TextLabel.TextScaled = true
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1
+TextLabel.Size = UDim2.new(0.8, 0, 0.2, 0)
+TextLabel.Position = UDim2.new(0.1, 0, 0.05, 0)
+
+local AnimationIDBox = Instance.new("TextBox", Frame)
+AnimationIDBox.PlaceholderText = "Animation ID Here"
+AnimationIDBox.Font = Enum.Font.Cartoon
+AnimationIDBox.TextColor3 = Color3.fromRGB(0, 0, 0)
+AnimationIDBox.TextScaled = true
+AnimationIDBox.BackgroundTransparency = 1
+AnimationIDBox.Size = UDim2.new(0.9, 0, 0.15, 0)
+AnimationIDBox.Position = UDim2.new(0.05, 0, 0.35, 0)
+
+local SoundIDBox = Instance.new("TextBox", Frame)
+SoundIDBox.PlaceholderText = "Sound ID Here (Optional)"
+SoundIDBox.Font = Enum.Font.Cartoon
+SoundIDBox.TextColor3 = Color3.fromRGB(0, 0, 0)
+SoundIDBox.TextScaled = true
+SoundIDBox.BackgroundTransparency = 1
+SoundIDBox.Size = UDim2.new(0.9, 0, 0.15, 0)
+SoundIDBox.Position = UDim2.new(0.05, 0, 0.6, 0)
+
+local PlayButton = Instance.new("TextButton", Frame)
+PlayButton.Text = "Play Animation"
+PlayButton.Font = Enum.Font.Cartoon
+PlayButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+PlayButton.TextScaled = true
+PlayButton.Size = UDim2.new(0.9, 0, 0.15, 0)
+PlayButton.Position = UDim2.new(0.05, 0, 0.85, 0)
+
+-- Animation Playback
+PlayButton.MouseButton1Click:Connect(function()
+    if AnimationIDBox.Text ~= "" then
+        if playing then
+            playAnother = true
+            playing = false
+        end
+
+        wait()
+
+        spawn(function()
+            playing = true
+            local animId = "rbxassetid://" .. AnimationIDBox.Text
+            local soundId = SoundIDBox.Text ~= "" and "rbxassetid://" .. SoundIDBox.Text or nil
+
+            local char = game.Players.LocalPlayer.Character
+            if not char then return end
+
+            local sound
+            if soundId then
+                sound = Instance.new("Sound", char.Torso)
+                sound.SoundId = soundId
+                sound.Looped = true
+                sound:Play()
+            end
+
+            -- Animation Logic
+            -- (This section can be expanded based on your specific animation handling logic)
+        end)
+    end
+end)
