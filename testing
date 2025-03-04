@@ -1,0 +1,126 @@
+-- Configuration Settings
+_G.HideCharacter = true
+_G.FlingEnabled = false
+_G.TransparentRig = true
+_G.ToolFling = true -- False = holding, true = fling
+_G.AntiFling = true
+_G.CustomHats = false -- Enable/disable custom rig feature
+
+_G.CH = {
+    Torso = {
+        Name = "Black",
+        TextureId = "14251599953",
+        Orientation = CFrame.Angles(0, 0, 0),
+    },
+    LeftArm = {
+        Name = "Accessory (LARM)",
+        TextureId = "17374768001",
+        Orientation = CFrame.Angles(0, 0, math.rad(90)),
+    },
+    RightArm = {
+        Name = "Accessory (RARM)",
+        TextureId = "17374768001",
+        Orientation = CFrame.Angles(0, 0, math.rad(90)),
+    },
+    LeftLeg = {
+        Name = "Accessory (LLeg)",
+        TextureId = "17387586304",
+        Orientation = CFrame.Angles(0, 0, math.rad(90)),
+    },
+    RightLeg = {
+        Name = "Accessory (RLeg)",
+        TextureId = "17387586304",
+        Orientation = CFrame.Angles(0, 0, math.rad(90)),
+    },
+}
+
+-- Load external resources
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nitro-GT/Oxide/refs/heads/main/LoadstringPerma"))()
+
+-- GUI Elements
+local IDPlayer = Instance.new("ScreenGui")
+local Frame = Instance.new("ImageLabel")
+local TextLabel = Instance.new("TextLabel")
+local AnimationIDBox = Instance.new("TextBox")
+local SoundIDBox = Instance.new("TextBox")
+local PlayButton = Instance.new("TextButton")
+
+-- Set GUI properties
+IDPlayer.Name = "IDPlayer"
+IDPlayer.Parent = game:GetService("CoreGui")
+
+Frame.Name = "Frame"
+Frame.Parent = IDPlayer
+Frame.BackgroundTransparency = 1
+Frame.Position = UDim2.new(0.025, 0, 0.443, 0)
+Frame.Size = UDim2.new(0.216, 0, 0.293, 0)
+Frame.Image = "rbxassetid://3570695787"
+Frame.ImageColor3 = Color3.fromRGB(255, 0, 81)
+Frame.SliceScale = 0.12
+
+TextLabel.Parent = Frame
+TextLabel.BackgroundTransparency = 1
+TextLabel.Position = UDim2.new(0.115, 0, 0.046, 0)
+TextLabel.Size = UDim2.new(0.787, 0, 0.179, 0)
+TextLabel.Font = Enum.Font.Cartoon
+TextLabel.Text = "Animation ID Player"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextScaled = true
+
+AnimationIDBox.Parent = Frame
+AnimationIDBox.BackgroundTransparency = 1
+AnimationIDBox.Position = UDim2.new(0.05, 0, 0.3, 0)
+AnimationIDBox.Size = UDim2.new(0.9, 0, 0.15, 0)
+AnimationIDBox.Font = Enum.Font.Cartoon
+AnimationIDBox.PlaceholderText = "Animation ID Here"
+AnimationIDBox.Text = ""
+AnimationIDBox.TextColor3 = Color3.fromRGB(0, 0, 0)
+AnimationIDBox.TextScaled = true
+
+SoundIDBox.Parent = Frame
+SoundIDBox.BackgroundTransparency = 1
+SoundIDBox.Position = UDim2.new(0.05, 0, 0.5, 0)
+SoundIDBox.Size = UDim2.new(0.9, 0, 0.15, 0)
+SoundIDBox.Font = Enum.Font.Cartoon
+SoundIDBox.PlaceholderText = "Sound ID Here (Optional)"
+SoundIDBox.Text = ""
+SoundIDBox.TextColor3 = Color3.fromRGB(0, 0, 0)
+SoundIDBox.TextScaled = true
+
+PlayButton.Parent = Frame
+PlayButton.BackgroundTransparency = 1
+PlayButton.Position = UDim2.new(0.05, 0, 0.7, 0)
+PlayButton.Size = UDim2.new(0.9, 0, 0.15, 0)
+PlayButton.Font = Enum.Font.Cartoon
+PlayButton.Text = "Play Animation"
+PlayButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+PlayButton.TextScaled = true
+
+-- Animation playback logic
+local playing = false
+local playanother = false
+local sound
+
+PlayButton.MouseButton1Click:Connect(function()
+    if AnimationIDBox.Text ~= "" then
+        if playing then
+            sound:Destroy()
+            playing = false
+            playanother = true
+        end
+        
+        spawn(function()
+            playing = true
+            sound = Instance.new("Sound", game:GetService("Players").LocalPlayer.Character:FindFirstChild("Torso"))
+            if SoundIDBox.Text ~= "" then
+                sound.SoundId = "rbxassetid://" .. SoundIDBox.Text
+            end
+            sound.Looped = true
+            sound.Playing = true
+
+            local animId = "rbxassetid://" .. AnimationIDBox.Text
+            local animObj = game:GetObjects(animId)[1]
+            -- Further logic for animation playback
+        end)
+    end
+end)
