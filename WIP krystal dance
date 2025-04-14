@@ -1,4 +1,4 @@
--- Krystal Dance V3, Made by Hemi (es muy janky)
+-- Krystal Dance V3, Made by Hemi (es muy janky) edit by vibin
 if not isfolder("Dances") then 
     makefolder("Dances")
     end
