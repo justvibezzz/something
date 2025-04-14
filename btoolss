@@ -1,0 +1,299 @@
+--[[
+originally made by rouxhaver
+made working and like tools n shit by hemi
+Note: Im too stupid to figure out how to stop hats from falling; so your character will reset once this happens
+]]
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local LocalPlayer = Players.LocalPlayer
+
+local lp = game.Players.LocalPlayer
+local c = lp.Character
+c.Archivable = true
+fake = c:Clone()
+fake.Parent = workspace
+fake.HumanoidRootPart.CFrame = CFrame.new(0, math.huge, 0)
+
+local r = c.HumanoidRootPart
+pcall(function()
+workspace.Handle.CFrame = r.CFrame
+workspace.Handle.CanCollide = false
+local n = 30
+local to = 0
+local t = {}
+c.ChildAdded:Connect(function(v)
+task.defer(function()
+if v:IsA("Tool") then
+if to<n then 
+v.Name = tostring(to)
+workspace.Handle.CFrame = r.CFrame
+table.insert(t,v)
+v.Parent = workspace
+end
+to=to+1
+end
+end)
+end)
+
+repeat task.wait() until to>=n
+task.wait()
+for i,v in t do
+c.Humanoid:EquipTool(v)
+end
+task.wait(.5)
+for i,v in lp.Backpack:GetChildren() do 
+if v:IsA("BackpackItem") then 
+v.Parent = c
+end
+end
+end)
+pcall(function()
+    for i,v in pairs(workspace.Regen:GetDescendants()) do
+    if v.Name == "Handle" and v:IsA("BasePart") then 
+    if v.Shape ~= Enum.PartType.Ball then
+    v.CFrame = r.CFrame
+    end
+    end
+    end
+    for i,v in lp.Backpack:GetChildren() do 
+        if v:IsA("BackpackItem") then 
+        v.Parent = c
+        end
+        end
+end)
+
+
+player = game:GetService("Players").LocalPlayer
+
+char = player.Character
+char.Archivable = true
+
+
+player.Character = nil 
+
+
+replicatesignal(game:GetService("Players").LocalPlayer.ConnectDiedSignalBackend)
+
+wait(game.Players.RespawnTime + .3) 
+
+player.Character = fake
+
+char.Humanoid.Health = 0
+
+Gui = player.PlayerGui
+Backpack = player.Backpack
+Mouse = player:GetMouse()
+
+Parts_Folder = Instance.new("Folder",workspace)
+local sin = math.sin
+local plrs = game:GetService("Players")
+local antisleepMultiplier=Vector3.new(.0025,.0025,.0025)
+local sine 
+for i,v in pairs(char:GetChildren()) do
+	if v:IsA("Tool")  then
+		local Part = Instance.new("Part",Parts_Folder)
+		Part.Name = v.Name
+		Part.Anchored = true
+		Part.Size = v.Handle.Size - Vector3.new(0.001,0.001,0.001)
+		Part.Position = char.Head.Position + Vector3.new(math.random(-5,5),math.random(-1,1),math.random(-5,5))
+		Part:SetAttribute("Moveable",true)
+		Part.Material = Enum.Material.SmoothPlastic
+		--Part.CanCollide = false
+		Part.Color = Color3.new(1,0,0)
+		Part.Transparency = 1
+		local obj = Instance.new("ObjectValue",Part)
+		obj.Name = "hat"
+		obj.Value = v.Handle
+		
+		local Hat = v.Handle
+	
+        game:GetService("RunService").Heartbeat:Connect(function()
+            sine=os.clock
+            local antisleep=sin(sine()*100)*antisleepMultiplier
+				Hat.CFrame = Part.CFrame + antisleep
+        end)
+	end
+end
+
+
+Move_Tool = Instance.new("Tool",Backpack)
+Rotate_Tool = Instance.new("Tool",Backpack)
+MHandle = Instance.new("Part",Move_Tool)
+RHandle = Instance.new("Part",Rotate_Tool)
+Mgrabs = Instance.new("Handles",Gui)
+Rgrabs = Instance.new("ArcHandles",Gui)
+Outline = Instance.new("Highlight")
+
+Move_Tool.Name = "Move"
+Move_Tool.CanBeDropped = false
+
+Rotate_Tool.Name = "Rotate"
+Rotate_Tool.CanBeDropped = false
+
+MHandle.Name = "Handle"
+MHandle.Transparency = 1
+
+RHandle.Name = "Handle"
+RHandle.Transparency = 1
+
+Mgrabs.Visible = false
+Mgrabs.Color3 = Color3.new(1, 0.8, 0)
+Mgrabs.Style = "Movement"
+
+Rgrabs.Visible = false
+
+Outline.FillTransparency = 1
+Outline.OutlineTransparency = 0
+Outline.OutlineColor = Color3.new(1, 0.8, 0)
+
+Active_Part = nil
+
+Move_Tool.AncestryChanged:Connect(function()
+	if Move_Tool.Parent == fake and Active_Part ~= nil then
+		Mgrabs.Visible = true
+		Mgrabs.Adornee = Active_Part
+	end
+end)
+
+Move_Tool.AncestryChanged:Connect(function()
+	if Move_Tool.Parent ~= fake then
+		Mgrabs.Visible = false
+		Mgrabs.Adornee = nil
+	end
+end)
+
+Mouse.Button1Down:Connect(function()
+	if Move_Tool.Parent == fake and Mouse.Target:GetAttribute("Moveable") then
+		Active_Part = Mouse.Target
+		Mgrabs.Visible = true
+		Mgrabs.Adornee = Active_Part
+		Outline.Parent = Active_Part.hat.Value
+	end
+	if Rotate_Tool.Parent == fake and Mouse.Target:GetAttribute("Moveable") then
+		Active_Part = Mouse.Target
+		Rgrabs.Visible = true
+		Rgrabs.Adornee = Active_Part
+		Outline.Parent = Active_Part.hat.Value
+	end
+end)
+
+Rotate_Tool.AncestryChanged:Connect(function()
+	if Rotate_Tool.Parent == fake and Active_Part ~= nil then
+		Rgrabs.Visible = true
+		Rgrabs.Adornee = Active_Part
+	end
+end)
+
+Rotate_Tool.AncestryChanged:Connect(function()
+	if Rotate_Tool.Parent ~= fake then
+		Rgrabs.Visible = false
+		Rgrabs.Adornee = nil
+	end
+end)
+
+MOGCFrame = CFrame.new()
+
+Mgrabs.MouseButton1Down:Connect(function()
+	MOGCFrame = Active_Part.CFrame
+end)
+
+Mgrabs.MouseDrag:Connect(function(knob, pos)
+	if knob == Enum.NormalId.Front then
+		Active_Part.CFrame = MOGCFrame + MOGCFrame.LookVector * pos
+	end
+	if knob == Enum.NormalId.Back then
+		Active_Part.CFrame = MOGCFrame + MOGCFrame.LookVector * -pos
+	end
+	if knob == Enum.NormalId.Top then
+		Active_Part.CFrame = MOGCFrame + MOGCFrame.UpVector * pos
+	end
+	if knob == Enum.NormalId.Bottom then
+		Active_Part.CFrame = MOGCFrame + MOGCFrame.UpVector * -pos
+	end
+	if knob == Enum.NormalId.Left then
+		Active_Part.CFrame = MOGCFrame + MOGCFrame.RightVector * -pos
+	end
+	if knob == Enum.NormalId.Right then
+		Active_Part.CFrame = MOGCFrame + MOGCFrame.RightVector * pos
+	end
+end)
+
+ROGCFrame = CFrame.new()
+
+Rgrabs.MouseButton1Down:Connect(function()
+	ROGCFrame = Active_Part.CFrame
+end)
+
+Rgrabs.MouseDrag:Connect(function(knob, angle)
+	if knob == Enum.Axis.Y then
+		Active_Part.CFrame = ROGCFrame * CFrame.Angles(0,angle,0)
+	end
+	if knob == Enum.Axis.X then
+		Active_Part.CFrame = ROGCFrame * CFrame.Angles(angle,0,0)
+	end
+	if knob == Enum.Axis.Z then
+		Active_Part.CFrame = ROGCFrame * CFrame.Angles(0,0,angle)
+	end
+end)
+
+Mouse.TargetFilter = char
+
+camera = workspace.CurrentCamera
+input = game:GetService("UserInputService")
+
+Camera_Part = Instance.new("Part",workspace)
+Camera_Part.Anchored = true
+Camera_Part.Transparency = 0.85
+Camera_Part.Shape = Enum.PartType.Ball
+Camera_Part.Size = Vector3.new(0.5,0.5,0.5)
+Camera_Part.Material = Enum.Material.SmoothPlastic
+
+current_position = char.Head.Position
+
+camera.CameraSubject = Camera_Part
+
+game:GetService("StarterGui"):SetCore("SendNotification",{
+	Title = "FE BTools Loaded",
+	Text = "Made by rouxhaver",
+	Icon = "rbxassetid://12997341656"
+})
+game:GetService("StarterGui"):SetCore("SendNotification",{
+	Title = "Network Credit:",
+	Text = "thanks to 4eyes for network stuff",
+	Icon = "rbxassetid://12997341656"
+})
+
+game:GetService("RunService").Heartbeat:Connect(function()
+    for i,v in pairs(char:GetChildren()) do
+        if v:IsA("Tool") then 
+            plrs.LocalPlayer.SimulationRadius = #plrs:GetChildren()*1000
+            v.Handle.Velocity = Vector3.new(0,50,0)
+        end
+    end
+end)
+while wait() do
+	if input:IsKeyDown(Enum.KeyCode.D) then
+		current_position += camera.CFrame.RightVector * speed
+	end
+	if input:IsKeyDown(Enum.KeyCode.A) then
+		current_position += camera.CFrame.RightVector * -speed
+	end
+	if input:IsKeyDown(Enum.KeyCode.W) then
+		current_position += camera.CFrame.LookVector * speed
+	end
+	if input:IsKeyDown(Enum.KeyCode.S) then
+		current_position += camera.CFrame.LookVector * -speed
+	end
+	if input:IsKeyDown(Enum.KeyCode.E) then
+		current_position += camera.CFrame.UpVector * speed
+	end
+	if input:IsKeyDown(Enum.KeyCode.Q) then
+		current_position += camera.CFrame.UpVector * -speed
+	end
+	if input:IsKeyDown(Enum.KeyCode.LeftShift) then do
+			sspeed = 1.5
+		end else
+		speed = 0.75
+	end
+	Camera_Part.Position = current_position
+end
