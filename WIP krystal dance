@@ -14,28 +14,28 @@ _G.CH = {
         Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(0))
     },
 
-    LeftLeg = {
-        Name= "Accessory (Left ArmAccessory)",
-        TextureId = "103757531289975", 
-        Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(0))
-    },
-
-    RightLeg = {
-        Name= "Accessory (Right ArmAccessory)",
-        TextureId = "103757531289975", 
-        Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(0))
-    },
-
-    LeftArm= {
-        Name= "Accessory (RightLeg1Accessory)",
-        TextureId = "103160995675216", 
-        Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(0))
+   LeftArm = {
+        Name= "Accessory (Left Void Wall)",
+        TextureId = "17269487469", 
+        Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(90))
     },
 
     RightArm = {
-        Name= "Accessory (LeftLeg1Accessory)",
-        TextureId = "103160995675216", 
-        Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(0))
+        Name= "Accessory (Right Void Wall)",
+        TextureId = "17269487469", 
+        Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(90))
+    },
+
+    LeftLeg = {
+        Name= "Accessory (Void Backpack)",
+        TextureId = "17269487469", 
+        Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(90))
+    },
+
+    RightLeg = {
+        Name= "Accessory (Middle Void Wall)",
+        TextureId = "17269487469", 
+        Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(90))
     }
 }
 _G.ClickFling = true
