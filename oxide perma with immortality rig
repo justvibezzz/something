@@ -471,7 +471,7 @@ local function redo()
 	else
 
 		for _,v in pairs(c:GetChildren()) do
-			if v:IsA("Accessory")  and v.Name ~= "gooblet" and v.Name ~= "Accessory (HeadAccessory)" and v.Name ~= "Pouch" and v.Name ~= "Scooper"   and v.Name ~= "fooblet"  and not string.find(v.Name,"Accessory (Noob") and v.Name ~= "Accessory (NoobLeftArm)"  and v.Name ~= "Accessory (NoobTorso)"  and v.Name ~= "Accessory (NoobRightArm)" and v.Name ~= "Rarm" and v.Name ~= "funnihead"  and v.Name ~= "Larm" and v.Name ~= "RectangleFace" and v.Name ~= "Tor" and v.Name ~= "RectangleHead-2"  and v.Name ~= "BlueRobotArm" and v.Name ~= "GreyRobotArm"   and v.Name ~= "Tor" and v.Name ~= "PurpleRobotArm" and v.Name ~= "RobotArmTest"  and v.Name ~= "LARM" and v.Name ~= "RARM"  and v.Name ~="Unloaded head" and v:WaitForChild("Handle").MeshId ~= "rbxassetid://11263221350"  then
+			if v:IsA("Accessory")  and v.Name ~= "gooblet" and v.Name ~= "Accessory (HeadAccessory)" and v.Name ~= "Pouch" and v.Name ~= "Scooper"   and v.Name ~= "fooblet"  and not string.find(v.Name,"Accessory (Noob") and v.Name ~= "Accessory (NoobLeftArm)"  and v.Name ~= "Accessory (NoobTorso)"  and v.Name ~= "Accessory (NoobRightArm)" and v.Name ~= "Rarm" and v.Name ~= "funnihead"  and v.Name ~= "Larm" and v.Name ~= "RectangleFace" and v.Name ~= "Tor" and v.Name ~= "RectangleHead-2"  and v.Name ~= "BlueRobotArm" and v.Name ~= "GreyRobotArm"   and v.Name ~= "Tor" and v.Name ~= "PurpleRobotArm" and v.Name ~= "RobotArmTest"  and v.Name ~= "LARM" and v.Name ~= "RARM"  and v.Name ~="Unloaded head" and v:WaitForChild("Handle").MeshId ~= "rbxassetid://17375312569"  then
 				if not char:FindFirstChild(v.Name) then
 					local a = v:Clone()
 					a.Handle:BreakJoints()
