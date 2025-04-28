@@ -8,39 +8,34 @@ _G.AntiFling = true
 _G.HatCollide = false
 _G.CustomHats = true -- Enable or disable custom rig feature (basically old oxide when false)
 _G.CH = {
-    Head = {
-        Name= "Accessory (EvilVoidHeadBackpack)",
-        TextureId = "17375312612",
-        Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(0))
-    },
     Torso = {
-        Name= "Accessory (Huge Void Backpack)",
-        TextureId = "17269636558",
+        Name= "Accessory (TorsoAccessory)",
+        TextureId = "85260593368362",
         Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(0))
     },
 
     LeftArm = {
-        Name= "Accessory (Left Void Wall)",
-        TextureId = "17269487469", 
-        Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(90))
+        Name= "Accessory (Left ArmAccessory)",
+        TextureId = "103757531289975", 
+        Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(0))
     },
 
     RightArm = {
-        Name= "Accessory (Right Void Wall)",
-        TextureId = "17269487469", 
-        Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(90))
+        Name= "Accessory (Right ArmAccessory)",
+        TextureId = "103757531289975", 
+        Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(0))
     },
 
     LeftLeg = {
-        Name= "Accessory (Void Backpack)",
-        TextureId = "17269487469", 
-        Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(90))
+        Name= "Accessory (RightLeg1Accessory)",
+        TextureId = "103160995675216", 
+        Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(0))
     },
 
     RightLeg = {
-        Name= "Accessory (Middle Void Wall)",
-        TextureId = "17269487469", 
-        Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(90))
+        Name= "Accessory (LeftLeg1Accessory)",
+        TextureId = "103160995675216", 
+        Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(0))
     }
 }
 _G.ClickFling = true
@@ -1393,7 +1388,7 @@ pcall(function()
 		for _,v in pairs(c:GetChildren()) do
 			if v:IsA("Accessory") and v.Name == "Heavenly Void Wings" then  
 				if c.Humanoid.RigType == Enum.HumanoidRigType.R6 then
-					v.Handle.SpecialMesh.MeshId = "rbxassetid://17375312569"
+					v.Handle.SpecialMesh.MeshId = "rbxassetid://17578463084"
 					v.Handle.SpecialMesh.TextureId = ""
 					v.Handle.Color = Color3.fromRGB(0,0,0)
 				else
