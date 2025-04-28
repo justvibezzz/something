@@ -8,34 +8,39 @@ _G.AntiFling = true
 _G.HatCollide = false
 _G.CustomHats = true -- Enable or disable custom rig feature (basically old oxide when false)
 _G.CH = {
+    Head = {
+        Name= "Accessory (EvilVoidHeadBackpack)",
+        TextureId = "17375312612",
+        Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(0))
+    },
     Torso = {
-        Name= "Accessory (TorsoAccessory)",
-        TextureId = "85260593368362",
+        Name= "Accessory (Huge Void Backpack)",
+        TextureId = "17269636558",
         Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(0))
     },
 
     LeftArm = {
-        Name= "Accessory (Left ArmAccessory)",
-        TextureId = "103757531289975", 
-        Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(0))
+        Name= "Accessory (Left Void Wall)",
+        TextureId = "17269487469", 
+        Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(90))
     },
 
     RightArm = {
-        Name= "Accessory (Right ArmAccessory)",
-        TextureId = "103757531289975", 
-        Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(0))
+        Name= "Accessory (Right Void Wall)",
+        TextureId = "17269487469", 
+        Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(90))
     },
 
     LeftLeg = {
-        Name= "Accessory (RightLeg1Accessory)",
-        TextureId = "103160995675216", 
-        Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(0))
+        Name= "Accessory (Void Backpack)",
+        TextureId = "17269487469", 
+        Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(90))
     },
 
     RightLeg = {
-        Name= "Accessory (LeftLeg1Accessory)",
-        TextureId = "103160995675216", 
-        Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(0))
+        Name= "Accessory (Middle Void Wall)",
+        TextureId = "17269487469", 
+        Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(90))
     }
 }
 _G.ClickFling = true
