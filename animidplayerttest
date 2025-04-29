@@ -35,7 +35,7 @@ _G.CH = {
         Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(90))
     }
 }
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Nitro-GT/Oxide/refs/heads/main/LoadstringPerma"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/justvibezzz/something/refs/heads/main/noob%20rig%20oxide%20perm"))()
 --Script Goes Here!0075, true)
 local playanother = false
 local playing = false
