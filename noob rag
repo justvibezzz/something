@@ -1,0 +1,49 @@
+getgenv().options = { -- SCRIPT OPTIONS
+    RagdollGravity = 196.2 -- change to any number above 0 (196.2 is default grav)
+}
+_G.HideCharacter = true
+_G.FlingEnabled = true
+_G.TransparentRig = true
+_G.ToolFling = false -- false = holding, true = fling
+_G.AntiFling = false
+_G.CustomHats = true -- Enable or disable custom rig feature (basically old oxide when false)
+_G.CH = {
+    Head = {
+        Name= "Face Behind Head_noob",
+        TextureId = "13058309280",
+        Orientation= CFrame.Angles(math.rad(0),math.rad(180),math.rad(0))
+    },
+
+    Torso = {
+        Name= "Accessory (NoobTorso)",
+        TextureId = "18640899481",
+        Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(0))
+    },
+
+    LeftArm = {
+        Name= "Accessory (NoobLeftArm)",
+        TextureId = "18640914168", 
+        Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(180))
+    },
+
+    RightArm = {
+        Name= "Accessory (NoobRightArm)",
+        TextureId = "18640914168", 
+        Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(180))
+    },
+
+    LeftLeg = {
+        Name= "Accessory (NoobLeftLeg)",
+        TextureId = "18640901676", 
+        Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(180))
+    },
+
+    RightLeg = {
+        Name= "Accessory (NoobRightLeg)",
+        TextureId = "18640901676", 
+        Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(180))
+    }
+}
+loadstring(game:HttpGet("https://raw.githubusercontent.com/justvibezzz/something/refs/heads/main/noob%20rig%20oxide%20perm"))()
+task.wait(.5) -- we give it time to load properly
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nitro-GT/OxideReanim/refs/heads/main/ragdoll"))()
