@@ -5,33 +5,44 @@ _G.TransparentRig = true
 _G.ToolFling = false -- false = holding, true = fling
 _G.AntiFling = true
 _G.HatCollide = false
-_G.CustomHats = false -- Enable or disable custom rig feature (basically old oxide when false)
+_G.CustomHats = true -- Enable or disable custom rig feature (basically old oxide when false)
 _G.CH = {
+    Head = {
+        Name= "Face Behind Head_noob",
+        TextureId = "13058309280",
+        Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(90))
+    },
+
     Torso = {
-        Name= "Accessory (TorsoNoob)",
-        TextureId = "125975972015302",
+        Name= "Accessory (NoobTorso)",
+        TextureId = "18640899481",
         Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(0))
     },
-    RightArm = {
-        Name= "Accessory (RArmNoob)",
-        TextureId = "135650240593878", 
-        Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(90))
-    },
+
     LeftArm = {
-        Name= "Accessory (LArmNoob)",
-        TextureId = "135650240593878", 
+        Name= "Accessory (NoobLeftArm)",
+        TextureId = "18640914168", 
         Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(90))
     },
-    RightLeg = {
-        Name= "Accessory (LARM)",
-        TextureId = "17374768001", 
+
+    RightArm = {
+        Name= "Accessory (NoobRightArm)",
+        TextureId = "18640914168", 
         Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(90))
     },
+
     LeftLeg = {
-        Name= "Accessory (RARM)",
-        TextureId = "17374768001", 
+        Name= "Accessory (NoobLeftLeg)",
+        TextureId = "18640901676", 
+        Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(90))
+    },
+
+    RightLeg = {
+        Name= "Accessory (NoobRightLeg)",
+        TextureId = "18640901676", 
         Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(90))
     }
+}
 }]]
 if _G.Scale == nil then
 _G.Scale = 1
