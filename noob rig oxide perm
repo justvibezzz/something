@@ -10,7 +10,7 @@ _G.CH = {
      Head = {
         Name= "Face Behind Head_noob",
         TextureId = "13058309280",
-        Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(0))
+        Orientation= CFrame.Angles(math.rad(0),math.rad(90),math.rad(0))
     },
 
     Torso = {
