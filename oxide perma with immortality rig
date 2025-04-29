@@ -13,32 +13,33 @@ _G.CH = {
         TextureId = "17375312612",
         Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(0))
     },
-    Torso = {
-        Name= "Accessory (HugeVoidBackpack)",
+
+     Torso = {
+        Name= "Accessory (Huge Void Backpack)",
         TextureId = "17269636558",
         Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(0))
     },
 
     LeftArm = {
-        Name= "Accessory (LeftVoidWall)",
+        Name= "Accessory (Left Void Wall)",
         TextureId = "17269487469", 
         Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(90))
     },
 
     RightArm = {
-        Name= "Accessory (RightVoidWall)",
+        Name= "Accessory (Right Void Wall)",
         TextureId = "17269487469", 
         Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(90))
     },
 
     LeftLeg = {
-        Name= "Accessory (VoidBackpack)",
+        Name= "Accessory (Void Backpack)",
         TextureId = "17269487469", 
         Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(90))
     },
 
     RightLeg = {
-        Name= "Accessory (MiddleVoidWall)",
+        Name= "Accessory (Middle Void Wall)",
         TextureId = "17269487469", 
         Orientation= CFrame.Angles(math.rad(0),math.rad(0),math.rad(90))
     }
